@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ffd6ec, #ffe3c8);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1, h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8rem;
+      color: #e91e63;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 800px;
+      position: relative;
+    }
+
+    .balloons {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .link-btn {
+      background-color: #e91e63;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.3s;
+      text-align: center;
+    }
+
+    .link-btn:hover {
+      background-color: #d81b60;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .message-line {
+      display: none;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+
+    canvas.confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    @media (max-width: 600px) {
+      h1, h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="balloons">🎈🎉🎂</div>
+    <h1>Happy Birthday!</h1>
+    <h2>Manshi</h2>
+    <p>
+      Wishing you a day filled with joy, laughter, and memories you'll never forget.
+      You deserve every smile and every bit of happiness that comes your way today. 💖
+    </p>
+
+    <div class="button-grid">
+      <a class="link-btn" href="about.html">About Me</a>
+      <a class="link-btn" href="days.html">Sundar Chavi Dekhe</a>
+      <a class="link-btn" href="bonus.html">Cute Hain Na?</a>
+      <a class="link-btn" href="tribute.html">Aap Kya Hain</a>
+      <a class="link-btn" href="message.html">Aapke Liye Sandesh</a>
+      <button class="link-btn" onclick="startSurprise()">Click for a Surprise</button>
+  
+    </div>
+
+   
+
+    <div id="surprise-messages" style="margin-top: 1.5rem;">
+      <p class="message-line">🎂 She doesn’t even know how beautiful she is ,and that’s the best part.</p>
+      <p class="message-line">🌸 There’s something about her , the kind you don’t forget even if you try</p>
+      <p class="message-line">🌟 She doesn’t need to shine. She’s the kind of light that just warms everything around her.</p>
+      <p class="message-line">✨ She’s beautiful in the way real things are : unpolished, honest and rare.</p>
+      <p class="message-line">🌼 She’s not just pretty. She makes things feel better, just by being there</p>
+      <p class="message-line">🌿 She’s not the kind you notice first. She’s the kind you remember longest.</p>
+      <p class="message-line">🎈 She’s not trying to be perfect. That’s exactly why she feels so real.</p>
+      <p class="message-line">💖 She’s not beautiful for the way she looks. She’s beautiful for the way she sees..</p>
+    </div>
+  </div>
+
+  <canvas class="confetti" id="confettiCanvas"></canvas>
+
+  <script>
+    function startSurprise() {
+      const lines = document.querySelectorAll('.message-line');
+      lines.forEach((line, index) => {
+        setTimeout(() => {
+          line.style.display = 'block';
+          line.style.opacity = 1;
+        }, index * 1500);
+      });
+      launchConfetti();
+    }
+
+    function launchConfetti() {
+      const duration = 5 * 1000;
+      const end = Date.now() + duration;
+      const colors = ['#ff4081', '#ffc107', '#8bc34a', '#00bcd4', '#ff5722'];
+      const canvas = document.getElementById('confettiCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const confettiPieces = [];
+
+      for (let i = 0; i < 150; i++) {
+        confettiPieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          r: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speed: Math.random() * 3 + 2,
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confettiPieces.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        });
+        update();
+      }
+
+      function update() {
+        confettiPieces.forEach(p => {
+          p.y += p.speed;
+          if (p.y > canvas.height) p.y = -10;
+        });
+      }
+
+      function animate() {
+        draw();
+        if (Date.now() < end) {
+          requestAnimationFrame(animate);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+
+      animate();
+    }
+  </script>
+
+</body>
+</html>

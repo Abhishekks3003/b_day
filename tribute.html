@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tum Jaise Ho</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #fff6f9, #ffe6f0);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: #e91e63;
+      margin-bottom: 2rem;
+    }
+    .tribute {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+    }
+    .line {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    .line:nth-child(1) { animation-delay: 0.3s; }
+    .line:nth-child(2) { animation-delay: 0.6s; }
+    .line:nth-child(3) { animation-delay: 0.9s; }
+    .line:nth-child(4) { animation-delay: 1.2s; }
+    .line:nth-child(5) { animation-delay: 1.5s; }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tribute">
+    <h1>Tum Jaise Ho...</h1>
+    <p class="line">Tum wo ho jo khud se zyada doosron ka khayal rakhti ho.</p>
+    <p class="line">Kabhi kabhi thak jaati ho, lekin dikhati nahi.</p>
+    <p class="line">Tumhari smile ka matlab har baar khushi nahi hoti ->par dikhana padta hai.</p>
+    <p class="line">Apne liye kuch chhupa jaati ho, dusron ke liye roshni ban jaati ho.</p>
+    <p class="line">Aur fir bhi... kehti ho, "Hum theek hain."</p>
+    <div class="footer">Made with Love and Respect</div>
+  </div>
+</body>
+</html>

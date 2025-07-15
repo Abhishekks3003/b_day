@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fff9f4;
+      font-family: 'Caveat', cursive;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .envelope-wrapper {
+      width: 90%;
+      max-width: 500px;
+      height: 350px;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #d9b99b;
+      border: 2px solid #333;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .flap {
+      width: 0;
+      height: 0;
+      border-left: 250px solid transparent;
+      border-right: 250px solid transparent;
+      border-bottom: 150px solid #c49a6c;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: top center;
+      transform: rotateX(0deg);
+      transition: transform 1s ease-in-out;
+      z-index: 3;
+    }
+
+    .letter {
+      position: absolute;
+      bottom: -100%;
+      width: 100%;
+      height: 100%;
+      background: #fffdf7 url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      padding: 2rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: bottom 1s ease-in-out 1s;
+      overflow-y: auto;
+      z-index: 1;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(-160deg);
+    }
+
+    .envelope.open .letter {
+      bottom: 0;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #e91e63;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .signature {
+      text-align: right;
+      font-style: italic;
+      margin-top: 2rem;
+      color: #555;
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 600px) {
+      .letter {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        padding: 1.2rem;
+      }
+      .signature {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope-wrapper">
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="letter">
+        <h1>For you...</h1>
+        <p>Kabhi kabhi zindagi mein sab kuch perfect nahi hota… par tumhara smile hona kaafi hota hai.</p>
+        <p>Tum jis bhi raaste par ho, jahan bhi ho, bas khud pr bharosa rakhna. Sab haasil kar logi tum — koi dikkat nahi hai.</p>
+        <p>Apne dreams ko seriously lo — koi chahe samjhe ya na samjhe, believe yourself!</p>
+        <p>Tum focus karo, khud pr. Overthink mat karo... gussa mat karo... sab theek ho jaata hai samay ke saath.</p>
+        <p>Tumhara gussa cute lagta hai, lekin jab tum khud ko hurt karti ho us gusse se… wo theek nahi lagta.</p>
+        <p>Tumhe khud se zyada koi deserve karta bhi nahi tumhari khushi ke liye.</p>
+        <p>Hum kabhi nahi chahenge ki tum kisi bhi dard ke saath raho — chahe wo dard hamari wajah se ho ya kisi aur ki.</p>
+        <p>Isliye keh rahe hain — apne liye sochna seekh lo.</p>
+        <p>Tum kahin bhi raho, kisi ke saath bhi raho — hamesha khush raho. Aapke janamdin par yahi aasha hai hamari.</p>
+        <p>Aur haan, agar kabhi lage ki koi nahi samajhta... ya sab kuch blurry ho gaya hai... to:</p>
+        <p><strong>text me.....</strong></p>
+        <div class="signature">for you,<br>from Someone</div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="rustle-sound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
+  <script>
+    window.onload = function () {
+      setTimeout(() => {
+        document.getElementById('envelope').classList.add('open');
+        document.getElementById('rustle-sound').play();
+      }, 1500);
+    };
+  </script>
+
+</body>
+</html>
